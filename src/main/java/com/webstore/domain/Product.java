@@ -15,6 +15,7 @@ public class Product  implements Serializable {
     private String manufacturer;
     private String category;
     private long unitsInOrder;
+    private long unitsInStock;
     private boolean discontinued;
     private String condition;
 
@@ -30,9 +31,6 @@ public class Product  implements Serializable {
     }
 
     // Setters and getters
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getProductId() {
         return productId;
@@ -89,7 +87,13 @@ public class Product  implements Serializable {
     public void setUnitsInOrder(long unitsInOrder) {
         this.unitsInOrder = unitsInOrder;
     }
+    public long getUnitsInStock() {
+        return unitsInStock;
+    }
 
+    public void setUnitsInStock(long unitsInStock) {
+        this.unitsInStock = unitsInStock;
+    }
     public boolean isDiscontinued() {
         return discontinued;
     }
@@ -130,4 +134,5 @@ public class Product  implements Serializable {
         result = prime * result + ((productId == null) ? 0 : productId.hashCode());
         return result;
     }
+
 }
