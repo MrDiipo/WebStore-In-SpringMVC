@@ -1,6 +1,5 @@
 
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,7 +20,7 @@
 
 <section class="container">
     <div class="row">
-        <c: forEach items="${products}}" var="products">
+        <c:forEach items="${products}" var="product">
             <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                 <div class="thumbnail">
                     <div class="caption">
@@ -32,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </c: forEach>
+        </c:forEach>
     </div>
 </section>
 
