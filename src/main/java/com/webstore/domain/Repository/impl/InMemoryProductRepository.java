@@ -15,13 +15,21 @@ import java.util.Map;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
-    @Autowired
+
     private NamedParameterJdbcTemplate template;
 
+    public NamedParameterJdbcTemplate getTemplate() {
+        return template;
+    }
+
+    @Autowired
+    public void setTemplate(NamedParameterJdbcTemplate template) {
+        this.template = template;
+    }
     @Override
     public List<Product> getAllProducts() {
         Map<String, Object> params = new HashMap<String, Object>();
-        List<Product> result = template.query("SELECT * FROM products" , params, new ProductMapper());
+        List<Product> result = getTemplate().query("SELECT * FROM products" , params, new ProductMapper());
         return result;
     }
 

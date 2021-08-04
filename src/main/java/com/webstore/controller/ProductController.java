@@ -1,23 +1,28 @@
 package com.webstore.controller;
 
-import com.webstore.domain.Product;
 import com.webstore.domain.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.webstore.domain.Repository.ProductRepository;
-import java.math.BigDecimal;
 
 @Controller
 public class ProductController {
 
-    @Autowired
+
     private ProductRepository productRepository;
 
+    public ProductRepository getProductRepository() {
+        return productRepository;
+    }
+    @Autowired
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     @RequestMapping("/products")
-    public String list(Model model){
-       model.addAttribute("products", productRepository.getAllProducts());
-       return "products";
+    public String list(Model model) {
+        model.addAttribute("products", getProductRepository().getAllProducts());
+        return "products";
     }
 }
