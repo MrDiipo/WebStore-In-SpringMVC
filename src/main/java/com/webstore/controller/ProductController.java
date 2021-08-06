@@ -9,20 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductController {
 
-
+    @Autowired
     private ProductRepository productRepository;
 
-    public ProductRepository getProductRepository() {
-        return productRepository;
-    }
-    @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @RequestMapping("/products")
     public String list(Model model) {
-        model.addAttribute("products", getProductRepository().getAllProducts());
+        model.addAttribute("products", productRepository.getAllProducts());
         return "products";
     }
 }

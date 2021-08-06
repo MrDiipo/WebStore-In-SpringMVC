@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 
-@Configuration
+
 @Repository
 public class RootApplicationContextConfig {
 

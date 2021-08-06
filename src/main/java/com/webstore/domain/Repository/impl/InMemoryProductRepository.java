@@ -16,20 +16,13 @@ import java.util.Map;
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
 
+    @Autowired
     private NamedParameterJdbcTemplate template;
 
-    public NamedParameterJdbcTemplate getTemplate() {
-        return template;
-    }
-
-    @Autowired
-    public void setTemplate(NamedParameterJdbcTemplate template) {
-        this.template = template;
-    }
-    @Override
+   @Override
     public List<Product> getAllProducts() {
         Map<String, Object> params = new HashMap<String, Object>();
-        List<Product> result = getTemplate().query("SELECT * FROM products" , params, new ProductMapper());
+        List<Product> result = template.query("SELECT * FROM products" , params, new ProductMapper());
         return result;
     }
 
@@ -38,7 +31,7 @@ public class InMemoryProductRepository implements ProductRepository {
             Product product = new Product();
             product.setProductId(rs.getString("ID"));
             product.setName(rs.getString("NAME"));
-            product.setDescription(rs.getString("UNIT_PRICE"));
+            product.setDescription(rs.getString("DESCRIPTION"));
             product.setUnitPrice(rs.getBigDecimal("UNIT_PRICE"));
             product.setManufacturer(rs.getString("MANUFACTURER"));
             product.setCategory(rs.getString("CATEGORY"));
